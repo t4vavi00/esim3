@@ -3,7 +3,7 @@ class Asiakas_model extends Ci_Model {
 
 	public function getAsiakas() {
 
-		$this->db->select('etunimi,sukunimi,email');
+		$this->db->select('id_asiakas,etunimi,sukunimi,email');
 		$this->db->from('asiakas');
 		return $this->db->get()->result_array();
 	}
@@ -15,6 +15,13 @@ class Asiakas_model extends Ci_Model {
 		$testi=$this->db->affected_rows();
 		return $testi;
 	}
+	public function delAsiakas($id) {
 
+		
+		$this->db->where('id_asiakas', $id);
+		$this->db->delete('asiakas');
+		$testi=$this->db->affected_rows();
+		return $testi;
+	}
 
 }

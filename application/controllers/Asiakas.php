@@ -33,4 +33,51 @@ class Asiakas extends CI_Controller {
 		$data['sivunsisalto']='asiakas/lisaa';
 		$this->load->view('menu/sisalto', $data);
 	}
-}
+
+	public function nayta_poistettavat() {
+
+		$this->load->model('Asiakas_model');
+		$data['asiakkaat']=$this->Asiakas_model->getAsiakas();
+		$data['sivunsisalto']='asiakas/poista';
+		$this->load->view('menu/sisalto', $data);
+
+
+	}
+
+
+	public function poista($id) {
+
+		
+
+		$this->load->model('Asiakas_model');
+		$poista=$this->Asiakas_model->delAsiakas($id);
+			if($poista>0){
+			echo '<script>alert("Poisto onnistui")</script>';
+			echo '<script>window.location= "http://[::1]/esim3/index.php/asiakas/listaa";</script>';
+			
+			}
+		}
+	public function etsi_tilaus() {
+
+		$id=$this->input->post('valittu_id');
+		$btn=$this->input->post('btnEtsi');
+
+
+
+		$this->load->model('Asiakas_model');
+		$this->load->model('Tilaus_model');
+		$data['asiakkaat']=$this->Asiakas_model->getAsiakas();
+
+		if(isset($btn))	{
+
+			$data['tilaus']=$this->Tilaus_model->searchTilaus($id);
+		}
+
+		$data['sivunsisalto']='asiakas/etsi_tilaus';
+		$this->load->view('menu/sisalto', $data);
+	}
+	
+			
+		 
+	}
+
