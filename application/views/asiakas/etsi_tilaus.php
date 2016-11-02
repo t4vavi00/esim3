@@ -25,7 +25,9 @@
 			
 		}
 	
-			
+		echo '<td>'.$rivi['sukunimi'].'</td>';
+		echo '<td>'.$rivi['etunimi'].'</td>';
+	
 		
 		//print_r($tilaus);
 	}
