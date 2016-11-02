@@ -53,7 +53,7 @@ class Asiakas extends CI_Controller {
 		$poista=$this->Asiakas_model->delAsiakas($id);
 			if($poista>0){
 			echo '<script>alert("Poisto onnistui")</script>';
-			echo '<script>window.location= "http://[::1]/esim3/index.php/asiakas/listaa";</script>';
+			echo '<script>window.location= "http://www.students.oamk.fi/~t4vavi00/esim3/";</script>';
 			
 			}
 		}
